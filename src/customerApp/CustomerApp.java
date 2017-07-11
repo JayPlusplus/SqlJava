@@ -6,18 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-/*Customer Number: 9
-Mr. Robert Dupree
-4101 Pickens Way
-Longview, TX 75601
-RobertODupree@einrot.com
-Mapping technician at Irving's Sporting Goods
-Press (1) to search for another customer or press (2) to Edit the customer's address.*/
+
 
 public class CustomerApp {
 	public static void main(String[] args) {
 		
 		MethodClass obj = new MethodClass();
+		String tot;
 		int a;
 		System.out.println("Press (1) to search for another customer or press (2) to Edit the customer's address.");
 		Scanner keyboard=new Scanner(System.in);
@@ -29,6 +24,13 @@ public class CustomerApp {
 		if (a == 2) {
 			obj.method2();
 				
+		}
+		
+		System.out.println("enter 'total' if you want to find "
+				+ "the numbers of customers");
+		tot = keyboard.next();
+		if (tot.equals("total")) {
+			obj.method3();
 		}
 	}
 }

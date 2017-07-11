@@ -89,4 +89,38 @@ public void method2() {
 		}
 	}
 }
+	public void method3() {
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+	        //con = DriverManager.getConnection("jdbc:oracle:thin:sys as sysdba/oracle@localhost:1521:orcl");
+	        con = DriverManager.getConnection("jdbc:oracle:thin:ora1/ora1@localhost:1521:orcl");
+			stmt = con.createStatement();
+			String total = "select count(*) from customers";
+			rs = stmt.executeQuery(total);
+			while(rs.next()){
+				System.out.println(rs.getString(1) + "\t");
+				//System.out.println(rs.getString(2));
+			}
+			//System.out.println("Please input customer's new address");
+			//String streetAddress = keyboard.nextLine();
+			
+			//int numUp = stmt.executeUpdate(sql);
+			//System.out.printf("%d records updated\n",numUp);
+			//System.out.println("Your new address is " + streetAddress);
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+		} 
+		
+		finally {
+			try {
+				rs.close();
+				stmt.close();
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
 }
